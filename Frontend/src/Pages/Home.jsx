@@ -11,6 +11,7 @@ import {
   FaDumbbell,
   FaSwimmingPool 
 } from 'react-icons/fa';
+import { useNavigate } from "react-router-dom";
 
 
 function Home() {
@@ -21,6 +22,7 @@ function Home() {
     "Luxury Hotels at Affordable Prices",
     "Experience Comfort and Convenience",
   ];
+  const navigate = useNavigate();
   const services = [
     {
       id: 1,
@@ -113,7 +115,7 @@ function Home() {
         {/* Header */}
         <div className="text-center mb-12">
           <div className="inline-flex items-center mb-4">
-            <span className="text-sm font-medium text-blue-500 bg-blue-100 px-3 py-1 rounded-full mr-4 hover:bg-orange-200 transition-colors cursor-pointer">
+            <span onClick={() => navigate("/all-rooms")} className="text-sm font-medium text-blue-500 bg-blue-100 px-3 py-1 rounded-full mr-4 hover:bg-orange-200 transition-colors cursor-pointer">
               All Rooms
             </span>
           </div>
@@ -167,7 +169,7 @@ function Home() {
             <p className="text-gray-600 mb-6">
               Book your stay now and enjoy all these premium services included in your reservation.
             </p>
-            <button className="bg-gradient-to-r from-blue-400 to-blue-700 text-white px-8 py-3 rounded-xl font-semibold hover:from-orange-600 hover:to-red-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+            <button onClick={() => navigate("/rooms")} className="bg-gradient-to-r from-blue-400 to-blue-700 text-white px-8 py-3 rounded-xl font-semibold hover:from-blue-700 hover:to-blue-900 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
               Book Now
             </button>
           </div>
