@@ -20,6 +20,7 @@ A full-stack hotel booking system built with Spring Boot, React.js, PostgreSQL, 
 📄 Pagination for room listings
 
 
+
 🖼️ Cloudinary Integration
 
 ☁️ Upload room images securely to Cloudinary
