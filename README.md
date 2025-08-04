@@ -1,11 +1,15 @@
 🏨 The Royal Crest – Hotel Booking Platform
 A full-stack hotel booking system built with Spring Boot, React.js, PostgreSQL, and AWS S3. Users can search, view, and book hotel rooms, while admins manage listings and bookings through a secure panel.
+
 🤝 Contributors
 👨‍💻 Parkkavi Sivakaran (@ParkkaviSivakaran72)
+
 🚀 Features
+
 🏨 Hotel Room Booking
 
 🔍 Real-time room availability
+
 🎯 Search & filter by location, price, and amenities
 🏠 Room detail pages with image gallery
 📝 Booking form with date range picker
