@@ -9,48 +9,48 @@ A full-stack hotel booking system built with Spring Boot, React.js, PostgreSQL, 
 
 🏨 Hotel Room Booking
 
-🔍 Real-time room availability
+•	🔍 Real-time room availability
 
-🎯 Search & filter by location, price, and amenities
+•	🎯 Search & filter by location, price, and amenities
 
-🏠 Room detail pages with image gallery
+•	🏠 Room detail pages with image gallery
 
-📝 Booking form with date range picker
+•	📝 Booking form with date range picker
 
-📄 Pagination for room listings
+•	📄 Pagination for room listings
 
 
 
 🖼️ Cloudinary Integration
 
-☁️ Upload room images securely to Cloudinary
+•	☁️ Upload room images securely to Cloudinary
 
-🌐 Serve static image URLs in frontend
+•	🌐 Serve static image URLs in frontend
 
 
 👤 User Profile Management
 
-🔐 Register/Login system
+•	🔐 Register/Login system
 
-✏️ Edit profile (with image upload)
+•	✏️ Edit profile (with image upload)
 
-📋 View bookings history
+•	📋 View bookings history
 
-❌ Cancel bookings
+•	❌ Cancel bookings
 
 ⚙️ Tech Stack
 
 Frontend
 
-React.js
+•	React.js
 
-Tailwind CSS
+•	Tailwind CSS
 
-Axios for HTTP requests
+•	Axios for HTTP requests
 
-React Router DOM
+•	React Router DOM
 
-JWT storage in localStorage
+•	JWT storage in localStorage
 
 🗂️ Folder Structure
 
@@ -63,8 +63,8 @@ src/
 
 🔐 Token Management
 
-Upon login, the JWT is stored securely in localStorage and automatically added to Authorization headers in all protected routes.
+•	Upon login, the JWT is stored securely in localStorage and automatically added to Authorization headers in all protected routes.
 
 🧪 Testing & Documentation
 
-✅ Postman collections for API testing
+•	✅ Postman collections for API testing
