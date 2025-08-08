@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { FaFilter, FaSearch, FaTh, FaList, FaSortAmountDown } from 'react-icons/fa';
 import RoomResult from '../Components/RoomResult';
-import Pagination from '../Components/PAgination';
-import APIService from '../Services/APISErvice';
-
+import Pagination from '../Components/Pagination';
+import APIService from '../Services/APIService';
 const AllRooms = () => {
     const [allRooms, setAllRooms] = useState([]);
     const [filteredRooms, setFilteredRooms] = useState([]);
@@ -16,6 +15,7 @@ const AllRooms = () => {
             try {
                 const response = await APIService.getRoomTypes();
                 // Ensure response is an array
+                console.log(response)
                 setRoomTypes(Array.isArray(response) ? response : []);
             } catch (error) {
                 console.log(error);
@@ -395,6 +395,7 @@ const AllRooms = () => {
                     </div>
                 </div>
             </div>
+            <div><Pagination /></div>
         </div>
     );
 };

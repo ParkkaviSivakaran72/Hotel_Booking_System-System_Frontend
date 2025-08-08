@@ -72,7 +72,7 @@ export default class APIService {
   }
 
   static async getAvailableRoomByDateAndTypes(checkInDate, checkOutDate, roomType) {
-    const response = await axios.get(`${this.BASE_URL}/rooms/available-rooms-by-date-and-type?checkInDate=${checkInDate}&checkOutdate=${checkOutDate}&roomType=${roomType}`);
+    const response = await axios.get(`${this.BASE_URL}/rooms/available-rooms-by-date-and-type?checkInDate=${checkInDate}&checkOutDate=${checkOutDate}&roomType=${roomType}`);
     return response.data;
   }
 
