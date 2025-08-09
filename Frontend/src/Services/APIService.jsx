@@ -43,6 +43,10 @@ export default class APIService {
     return response.data;
   }
 
+  static async updateUserProfile(){
+    const response = await axios.post(`${this.BASE_URL}/users/update-profile`)
+  }
+
   static async getUser(userId) {
     const response = await axios.get(`${this.BASE_URL}/users/get-by-id/${userId}`, {
       headers: this.getHeader()
@@ -153,4 +157,7 @@ export default class APIService {
     const role = localStorage.getItem('role');
     return role === 'USER';
   }
+
+
 }
+
