@@ -3,8 +3,10 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import APIService from '../Services/APISErvice';
 
 const LoginPage = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [formData, setFormData] = useState({
+        email: '',
+        password: ''
+    });
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
@@ -14,21 +16,30 @@ const LoginPage = () => {
     
     const from = location.state?.from || { pathname: '/home' };
     
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value
+        });
+    };
+    
     const handleLogin = async (e) => {
         e.preventDefault();
         setError('');
         setIsLoading(true);
         
         try {
-            if (!email || !password) {
+            if (!formData.email || !formData.password) {
                 setError('Email and password are required');
                 setIsLoading(false);
                 return;
             }
             
-            const response = await APIService.login(email, password);
+            const response = await APIService.loginUser(formData);
             if (response.statusCode === 200) {
-                localStorage.setItem('user', JSON.stringify(response.data));
+                localStorage.setItem('token', response.token);
+                localStorage.setItem('role', response.role);
                 navigate(from.pathname, { replace: true });
             }
         } catch (error) {
@@ -76,8 +87,8 @@ const LoginPage = () => {
                                     type="email"
                                     autoComplete="email"
                                     required
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
+                                    value={formData.email}
+                                    onChange={handleInputChange}
                                     className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200"
                                     placeholder="Enter your email"
                                 />
@@ -101,8 +112,8 @@ const LoginPage = () => {
                                     type={showPassword ? 'text' : 'password'}
                                     autoComplete="current-password"
                                     required
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
+                                    value={formData.password}
+                                    onChange={handleInputChange}
                                     className="block w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200"
                                     placeholder="Enter your password"
                                 />
@@ -198,9 +209,13 @@ const LoginPage = () => {
                     <div className="text-center">
                         <p className="text-sm text-gray-600">
                             Don't have an account?{' '}
-                            <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
+                            <button
+                                type="button"
+                                onClick={() => navigate('/register')}
+                                className="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline"
+                            >
                                 Sign up here
-                            </a>
+                            </button>
                         </p>
                     </div>
                 </form>

@@ -17,8 +17,16 @@ export default class APIService {
   }
 
   static async loginUser(loginDetails) {
-    const response = await axios.post(`${this.BASE_URL}/auth/login`, loginDetails);
+    try {
+      const response = await axios.post(`${this.BASE_URL}/auth/login`, loginDetails);
     return response.data;
+    } catch (error) {
+      
+      console.error("Login failed:", error);
+      console.log("Error details:", error.message);
+      throw error; // Re-throw the error to handle it in the calling function
+    }
+    
   }
 
   static async getAllUsers() {
