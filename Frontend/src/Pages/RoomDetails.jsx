@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import { format } from 'date-fns';
+import { format, set } from 'date-fns';
 import { FaCalendarAlt, FaUsers, FaBed, FaArrowLeft } from 'react-icons/fa';
 import { differenceInDays } from 'date-fns';
 import APIService from '../Services/APISErvice';
@@ -19,6 +19,7 @@ const RoomDetails = () => {
   const [children, setChildren] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [BookingConfirmationCode, setBookingConfirmationCode] = useState('');
 
   // Local state for dates (can be edited if not from search)
   const [checkInDate, setCheckInDate] = useState(stateCheckInDate || '');
@@ -75,17 +76,42 @@ const RoomDetails = () => {
       return;
     }
 
-    navigate('/booking-confirmation', {
-      state: {
-        room,
-        checkInDate,
-        checkOutDate,
-        nights,
-        totalPrice,
-        numberOfAdults: adults,
-        numberOfChildren: children,
-      },
-    });
+    
+  };
+
+  const acceptBooking = async () => {
+    try {
+      const startDate = new Date(checkInDate);
+      const endDate = new Date(checkOutDate);
+
+    const formattedStartDate = new Date(startDate.getTime() - startDate.getTimezoneOffset() * 60000).toISOString();
+    const formattedEndDate = new Date(endDate.getTime() - endDate.getTimezoneOffset() * 60000).toISOString();
+
+    const bookingData = {
+      checkInDate: formattedStartDate,
+      checkOutDate: formattedEndDate,
+      numOfAdults: adults,
+      numOfChildren: children
+    };
+
+      const response = await APIService.bookRoom(roomId,useRevalidator, bookingData);
+      if(response.statusCode === 200) {
+        alert('Booking successful!');
+        setBookingConfirmationCode(response.confirmationCode);
+
+        setTimeout(() => {
+          navigate('/find-booking', { state: { confirmationCode: response.confirmationCode } });
+        }, 10000);
+
+      }
+    }catch (error) {
+        console.error('Booking error:', error);
+        setError('Failed to book the room. Please try again later.');
+        setTimeout(() => {
+          setError('');
+          navigate('/all-rooms');
+    }, 5000);
+    }
   };
 
   const formatDate = (dateString) => {
