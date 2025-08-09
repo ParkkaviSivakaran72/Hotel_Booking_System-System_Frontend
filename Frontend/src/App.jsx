@@ -15,6 +15,7 @@ import ContactUs from "./Pages/ContactUs";
 import FindBooking from "./Pages/FindBooking";
 import LoginPage from "./Pages/LoginPage";
 import RegisterPage from "./Pages/RegisterPage"; // Add this if you have a register page
+import Profile from "./Pages/Profile";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -36,7 +37,10 @@ function App() {
         <Route path="/rooms" element={<Rooms />} />
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/contact-us" element={<ContactUs />} />
-        <Route path="/all-rooms" element={<AllRooms />} />
+        <Route path="/contact-us" element={<ContactUs />} />
+        <Route path="/profile" element={<Profile />} />
+        {/* <Route path="/edit-profile" element={<EditProfile />} /> */}
+
         <Route path="/find-booking" element={<FindBooking />} />
         <Route path="/room-details-book/:roomId" element={<RoomDetails />} />
       </Routes>
