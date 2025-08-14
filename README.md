@@ -6,7 +6,7 @@ Users can search, view, and book hotel rooms, while admins manage listings and b
 ---
 
 ## 🔗 Backend
-[![GitHub](https://img.shields.io/badge/GitHub-Repository-blue?logo=github)](https://github.com/ParkkaviSivakaran72/Hotel)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-blue?logo=backend)](https://github.com/ParkkaviSivakaran72/Hotel)
 
 ---
 
